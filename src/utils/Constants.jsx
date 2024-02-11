@@ -14,7 +14,7 @@ export const YT_VIDEOS_API = `https://youtube.googleapis.com/youtube/v3/videos?p
 export const GET_COMMENTS = (video_id) => (`https://youtube.googleapis.com/youtube/v3/commentThreads?part=snippet%2Creplies&maxResults=100&videoId=${video_id}&key=AIzaSyDHeBrlVJB_DY6k6p2NMKzWlWxzjUvdMEE`);
 export const GET_COMMENT_THREADS = (videoId)=>`https://youtube.googleapis.com/youtube/v3/commentThreads?part=snippet%2Creplies&videoId=${videoId}&key=${API_KEY}`
 export const GET_VIDEOS_BY_QUERY = (query) => `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=50&order=viewCount&type=video&videoDuration=medium&q=${query}&key=${API_KEY}`
-export const SEARCH = (q) => `https://corsproxy.io/?` + encodeURIComponent(`http://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q=${q}`);
+export const SEARCH = (q) => `http://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q=${q}`
 
 export const commentData = [{
     "id": 0,
