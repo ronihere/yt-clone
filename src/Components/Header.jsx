@@ -37,15 +37,16 @@ const Header = () => {
     const fetchSearchList = async () => {
         try {
             if (searchStringFromStore[searchString]) {
+                console.log('From redux:::', searchStringFromStore[searchString])
                 setSearchList(searchStringFromStore[searchString])
-                return;
+            } else {
+                const data = await fetch(SEARCH(searchString));
+                const newdata = await data.json();
+                setSearchList(newdata[1]);
+                dispatch(setSearchListStore({
+                    [searchString]: newdata[1],
+                }))
             }
-            const data = await fetch(SEARCH(searchString));
-            const newdata = await data.json();
-            setSearchList(newdata[1]);
-            dispatch(setSearchListStore({
-                [searchString]: newdata[1],
-            }))
             setShowSearchList(true);
         }
         catch (err) {
@@ -87,7 +88,9 @@ searchList?.length > 0 && showSearchList &&
                 <div className='rounded-xl absolute top-12 py-4 bg-gray-800 w-full h-fit text-white' >
                     
                     { searchList.map((ele) => {
-                        return (<p key={ele} className='p-2 w-full text-white shadow-sm' onClick={() => navigateToSearchPage(ele)}
+                        return (<p key={ele} className='p-2 w-full text-white shadow-sm' onMouseDown={() => {
+                            navigateToSearchPage(ele)
+                        }}
                         >{ele}</p>)
                     })}
            </div>
