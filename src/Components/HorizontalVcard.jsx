@@ -9,7 +9,7 @@ const HorizontalVcard = ({ snippet, id  }) => {
   const publishDate = moment(publishTime, "YYYYMMDD").fromNow()
   
   return (
-    <div className='w-fit p-1 flex bg-black shadow-lg relative'>
+    <div className='w-fit p-1 flex bg-black shadow-lg'>
           <img alt='thumbnail' src={thumbnails.medium.url} className='rounded-lg object-contain' />
           <div className='flex flex-col px-4'>
           <div className=' font-semibold text-xl font-sans'>{title}</div>
